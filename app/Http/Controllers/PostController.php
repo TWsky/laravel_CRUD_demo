@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -66,6 +66,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -78,6 +79,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Post::where('id', $id)->update(['title' => $request->postTitle, 'content' => $request->postContent]);
+        return redirect()->action('PostController@index');
     }
 
     /**

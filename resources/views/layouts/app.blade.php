@@ -81,5 +81,20 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script>
+      $('#editModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var title = button.data('title')
+        var content = button.data('content')
+        var id = button.data('id')
+        var actionStr = '/posts/' + id
+
+        var modal = $(this)
+        modal.find('#editPostForm').attr("action", actionStr)
+        modal.find('.modal-title').text('Edit ' + title)
+        modal.find('#postTitle').val(title)
+        modal.find('#postContent').val(content)
+      })
+    </script>
 </body>
 </html>
