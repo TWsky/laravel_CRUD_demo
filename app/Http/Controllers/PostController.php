@@ -39,6 +39,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+
+        $addPost = Post::insert(
+          ['title' => $request->input('title'), 'content' => $request->input('content'), 'dueDate' => date('Y-m-d'), 'user_id' => '2']
+        );
+        return redirect()->action('PostController@index');
     }
 
     /**
