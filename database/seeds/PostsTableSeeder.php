@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Post;
 
 class PostsTableSeeder extends Seeder
 {
@@ -11,9 +12,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->insert([
-          ['title' => '第一篇', 'content' =>' 內文一', 'dueDate' => '2016-09-18', 'user_id' => '2', 'created_at' => date("Y-m-d")],
-          ['title' => '第二篇', 'content' => '內文二', 'dueDate' => '2016-09-20', 'user_id' => '2', 'created_at' => date("Y-m-d")]
-        ]);
+      $post = Post::create(['title' => '第一篇', 'content' =>' 內文一', 'dueDate' => '2016-09-18', 'user_id' => '2']);
+      $post = Post::create(['title' => '第二篇', 'content' => '內文二', 'dueDate' => '2016-09-20', 'user_id' => '2']);
     }
 }

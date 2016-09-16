@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'DESC')->get();
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         //
 
-        $addPost = Post::insert(
+        $addPost = Post::create(
           ['title' => $request->input('title'), 'content' => $request->input('content'), 'dueDate' => date('Y-m-d'), 'user_id' => '2']
         );
         return redirect()->action('PostController@index');
