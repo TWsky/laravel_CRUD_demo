@@ -41,7 +41,12 @@ class PostController extends Controller
         //
 
         $addPost = Post::create(
-          ['title' => $request->input('title'), 'content' => $request->input('content'), 'dueDate' => date('Y-m-d'), 'user_id' => '2']
+          [
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'dueDate' => date('Y-m-d'),
+            'user_id' => \Auth::user()->id,
+            ]
         );
         return redirect()->action('PostController@index');
     }
